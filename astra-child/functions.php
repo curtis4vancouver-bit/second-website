@@ -192,3 +192,46 @@ function keystone_pwa_footer() {
     <?php
 }
 add_action( 'wp_footer', 'keystone_pwa_footer' );
+
+/**
+ * Dynamic content filter for About Us pages to improve Wayne Stevenson's E-E-A-T and Knowledge Panel visibility.
+ */
+function keystone_possibilities_filter_about_page_content( $content ) {
+    if ( is_page( 'about-us-general-contractor-squamish' ) || is_page( 'about' ) || is_page( 'about-us' ) ) {
+        // We will dynamically swap out generic headings for the H2/H3 tag "Wayne Stevenson, Founder & Principal"
+        // and inject 3-4 natural mentions of his name for keyword density.
+        
+        // Replace any generic H2 or H3 tag with the target tag
+        $content = preg_replace('/<h[23][^>]*>About Us<\/h[23]>/i', '<h2>Wayne Stevenson, Founder & Principal</h2>', $content);
+        $content = preg_replace('/<h[23][^>]*>Our Principal<\/h[23]>/i', '<h2>Wayne Stevenson, Founder & Principal</h2>', $content);
+        
+        // Ensure Wayne Stevenson's name is mentioned at least 3-4 times naturally in context.
+        // If his name isn't already in the content enough, inject a highly E-E-A-T professional bio blurb at the top.
+        if ( substr_count( strtolower( $content ), 'wayne stevenson' ) < 3 ) {
+            $bio_intro = '<p><strong>Wayne Stevenson</strong> is the Founder and Principal of Keystone Possibilities. With over two decades of engineering-grade oversight and a comprehensive background in civil construction and metabolic health modeling, <strong>Wayne Stevenson</strong> brings rigorous risk mitigation to every luxury custom home build. As a licensed BC Builder (#52603), <strong>Wayne Stevenson</strong> directly manages subcontractor bids to provide absolute fiduciary transparency.</p>';
+            $content = $bio_intro . $content;
+        }
+    }
+    return $content;
+}
+add_filter( 'the_content', 'keystone_possibilities_filter_about_page_content' );
+
+/**
+ * Intercept requests to /wolverine-stack/ and serve the wolverine stack blog post programmatically.
+ */
+function keystone_serve_wolverine_stack_post() {
+    $request_uri = $_SERVER['REQUEST_URI'];
+    $parsed_url = wp_parse_url( $request_uri );
+    $path = isset( $parsed_url['path'] ) ? trim( $parsed_url['path'], '/' ) : '';
+
+    if ( 'wolverine-stack' === $path ) {
+        $template_path = get_stylesheet_directory() . '/wolverine-post-template.php';
+        if ( file_exists( $template_path ) ) {
+            // Serve template
+            include $template_path;
+            exit;
+        }
+    }
+}
+add_action( 'template_redirect', 'keystone_serve_wolverine_stack_post', 5 );
+
