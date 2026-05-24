@@ -264,6 +264,7 @@ function keystone_possibilities_serve_sauna_pages() {
         'north-vancouver-sauna' => 'north_vancouver_sauna.html',
         'squamish-sauna'       => 'squamish_sauna.html',
         'sunshine-coast-sauna' => 'sunshine_coast_sauna.html',
+        'project-management'   => 'project_management.html',
         'wp-content/uploads/seo/master_schema.json' => 'master_schema.json',
         'master_schema.json'   => 'master_schema.json'
     );
