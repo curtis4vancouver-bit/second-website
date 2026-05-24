@@ -1,0 +1,210 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://www.keystonepossibilities.com/wayne-stevenson/#person",
+      "name": "Wayne Stevenson",
+      "jobTitle": "Managing Director & Chief Builder",
+      "worksFor": {
+        "@id": "https://www.keystonepossibilities.com/#organization"
+      },
+      "url": "https://www.keystonepossibilities.com/wayne-stevenson/",
+      "image": {
+        "@type": "ImageObject",
+        "@id": "https://www.keystonepossibilities.com/wayne-stevenson/#portrait",
+        "url": "https://www.keystonepossibilities.com/wp-content/uploads/wayne-stevenson.jpg"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/wayne-stevenson",
+        "https://www.youtube.com/channel/UCMn1f9DTF_iybKmv5WlTm9Q",
+        "https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y",
+        "https://open.spotify.com/show/keystonepossibilities"
+      ],
+      "knowsAbout": [
+        "High-End Custom Home Construction",
+        "Metabolic Health Optimization",
+        "Peptide Therapeutics & Combinatorial Analysis",
+        "Structural Engineering & Deck Load Dynamics",
+        "Geotechnical & High-Gradient Cliffside Excavation",
+        "Eco-Sensitive Root System Protection Foundation Design",
+        "Solfeggio Frequencies & Melodic House Music Production"
+      ],
+      "hasCredential": {
+        "@id": "https://www.keystonepossibilities.com/wayne-stevenson/#license-52603"
+      },
+      "brand": [
+        {
+          "@id": "https://www.keystonepossibilities.com/#brand-possibilities"
+        },
+        {
+          "@id": "https://www.keystonerecomposition.com/#brand-recomposition"
+        }
+      ]
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "@id": "https://www.keystonepossibilities.com/wayne-stevenson/#license-52603",
+      "name": "BC Residential Builder License #52603",
+      "credentialCategory": "Professional Provincial License",
+      "credentialNumber": "52603",
+      "recognizedBy": {
+        "@type": "GovernmentOrganization",
+        "name": "BC Housing Licensing and Consumer Services",
+        "url": "https://www.bchousing.org/"
+      },
+      "validIn": {
+        "@type": "AdministrativeArea",
+        "name": "British Columbia",
+        "sameAs": "https://en.wikipedia.org/wiki/British_Columbia"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.keystonepossibilities.com/#organization",
+      "name": "Keystone Possibilities Ltd.",
+      "legalName": "Keystone Possibilities Ltd.",
+      "url": "https://www.keystonepossibilities.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "https://www.keystonepossibilities.com/#logo",
+        "url": "https://www.keystonepossibilities.com/wp-content/uploads/keystone-possibilities-logo.png"
+      },
+      "sameAs": [
+        "https://www.crunchbase.com/organization/keystone-possibilities",
+        "https://www.linkedin.com/company/keystone-possibilities"
+      ],
+      "founder": {
+        "@id": "https://www.keystonepossibilities.com/wayne-stevenson/#person"
+      },
+      "areaServed": [
+        {
+          "@type": "AdministrativeArea",
+          "name": "Whistler",
+          "sameAs": "https://en.wikipedia.org/wiki/Whistler,_British_Columbia"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "West Vancouver",
+          "sameAs": "https://en.wikipedia.org/wiki/West_Vancouver"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "North Vancouver",
+          "sameAs": "https://en.wikipedia.org/wiki/North_Vancouver_(district_municipality)"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Squamish",
+          "sameAs": "https://en.wikipedia.org/wiki/Squamish,_British_Columbia"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Sunshine Coast",
+          "sameAs": "https://en.wikipedia.org/wiki/Sunshine_Coast_Regional_District"
+        }
+      ],
+      "knowsAbout": [
+        "B2B Construction Project Management",
+        "Custom Luxury Home Building",
+        "Geotechnical Engineering Services",
+        "Commercial Infrastructure Development",
+        "Backyard Wellness & Spa Infrastructure"
+      ]
+    },
+    {
+      "@type": "Brand",
+      "@id": "https://www.keystonepossibilities.com/#brand-possibilities",
+      "name": "Keystone Possibilities",
+      "url": "https://www.keystonepossibilities.com/",
+      "logo": "https://www.keystonepossibilities.com/wp-content/uploads/possibilities-logo.png",
+      "description": "High-end B2B construction management, engineering risk mitigation, and custom high-performance developments in the Sea-to-Sky corridor."
+    },
+    {
+      "@type": "Brand",
+      "@id": "https://www.keystonerecomposition.com/#brand-recomposition",
+      "name": "Keystone Recomposition",
+      "url": "https://www.keystonerecomposition.com/",
+      "logo": "https://www.keystonerecomposition.com/wp-content/uploads/recomposition-logo.png",
+      "description": "High-performance metabolic health, muscle-preservation peptide case studies, and Solfeggio soundscapes engineered for physical and mental infrastructure."
+    },
+    {
+      "@type": "MusicGroup",
+      "@id": "https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y/#musicgroup",
+      "name": "Wayne Stevenson",
+      "sameAs": [
+        "https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y",
+        "https://www.youtube.com/channel/UCMn1f9DTF_iybKmv5WlTm9Q"
+      ],
+      "genre": [
+        "Deep House",
+        "Melodic House",
+        "Orchestral Deep Cello"
+      ],
+      "description": "Deep, atmospheric workflow rhythms and motivational cello-infused grooves built on Solfeggio frequencies.",
+      "member": {
+        "@id": "https://www.keystonepossibilities.com/wayne-stevenson/#person"
+      }
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://www.keystonepossibilities.com/squamish-sauna/#localbusiness",
+      "name": "Suna Spa Squamish by Keystone Possibilities",
+      "image": "https://www.keystonepossibilities.com/wp-content/uploads/squamish-cliffside-sauna.jpg",
+      "url": "https://www.keystonepossibilities.com/squamish-sauna/",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Watts Point / Sea-to-Sky Corridor",
+        "addressLocality": "Squamish",
+        "addressRegion": "BC",
+        "postalCode": "V8B 0A1",
+        "addressCountry": "CA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "49.6580",
+        "longitude": "-123.2140"
+      },
+      "priceRange": "$$$$",
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "Squamish",
+        "sameAs": "https://en.wikipedia.org/wiki/Squamish,_British_Columbia"
+      },
+      "parentOrganization": {
+        "@type": "Organization",
+        "@id": "https://www.keystonepossibilities.com/#organization"
+      }
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://www.keystonepossibilities.com/sunshine-coast-sauna/#localbusiness",
+      "name": "Suna Spa Sunshine Coast by Keystone Possibilities",
+      "image": "https://www.keystonepossibilities.com/wp-content/uploads/sunshine-coast-forest-sauna.jpg",
+      "url": "https://www.keystonepossibilities.com/sunshine-coast-sauna/",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Coastal Highway / Sechelt Corridor",
+        "addressLocality": "Sunshine Coast (Sechelt / Gibsons)",
+        "addressRegion": "BC",
+        "postalCode": "V0N 3A0",
+        "addressCountry": "CA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "49.4730",
+        "longitude": "-123.7540"
+      },
+      "priceRange": "$$$$",
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "Sunshine Coast",
+        "sameAs": "https://en.wikipedia.org/wiki/Sunshine_Coast_Regional_District"
+      },
+      "parentOrganization": {
+        "@type": "Organization",
+        "@id": "https://www.keystonepossibilities.com/#organization"
+      }
+    }
+  ]
+}

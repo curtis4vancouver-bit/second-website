@@ -2,6 +2,386 @@
 Theme Name: Keystone Possibilities Child
 Author: Keystone Architect
 Description: Custom SEO, redirects, and core functionality fixes for Keystone Possibilities.
-Version: 1.0.0
+Version: 1.0.4
 Template: astra
 */
+
+/* ==========================================================================
+   Keystone Possibilities - Premium Blog Archive Grid Layout Adjustments
+   ========================================================================== */
+
+.ast-blog-layout-4-grid .ast-row,
+.ast-blog-layout-4-grid .infinite-wrap {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  column-gap: 45px !important;
+  row-gap: 55px !important;
+}
+
+@media (max-width: 768px) {
+  .ast-blog-layout-4-grid .ast-row,
+  .ast-blog-layout-4-grid .infinite-wrap {
+    grid-template-columns: 1fr !important;
+    row-gap: 45px !important;
+  }
+}
+
+.ast-blog-layout-4-grid .ast-row article,
+.ast-blog-layout-4-grid .infinite-wrap article {
+  width: 100% !important;
+  min-width: 0 !important;
+  float: none !important;
+  margin: 0px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  background: #080808 !important;
+  border: 1px solid rgba(196, 162, 101, 0.1) !important;
+  padding: 0px !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.ast-blog-layout-4-grid .ast-row article:hover,
+.ast-blog-layout-4-grid .infinite-wrap article:hover {
+  border-color: rgba(196, 162, 101, 0.3) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+.ast-blog-layout-4-grid .ast-row article .ast-article-inner,
+.ast-blog-layout-4-grid .infinite-wrap article .ast-article-inner {
+  flex: 1 1 0% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+.ast-blog-layout-4-grid .ast-row article .post-thumb,
+.ast-blog-layout-4-grid .infinite-wrap article .post-thumb {
+  overflow: hidden !important;
+  margin: 0px !important;
+  padding: 0px !important;
+  border-bottom: 2px solid rgba(196, 162, 101, 0.15) !important;
+}
+
+.ast-blog-layout-4-grid .ast-row article .post-thumb img,
+.ast-blog-layout-4-grid .infinite-wrap article .post-thumb img {
+  height: 320px !important;
+  width: 100% !important;
+  object-fit: cover !important;
+  border-radius: 0px !important;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+.ast-blog-layout-4-grid .ast-row article:hover .post-thumb img,
+.ast-blog-layout-4-grid .infinite-wrap article:hover .post-thumb img {
+  transform: scale(1.04) !important;
+}
+
+.ast-blog-layout-4-grid .ast-row article .post-content,
+.ast-blog-layout-4-grid .infinite-wrap article .post-content {
+  flex: 1 1 0% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  padding: 30px 25px 25px 25px !important;
+  background: #080808 !important;
+}
+
+.ast-blog-layout-4-grid h2.entry-title {
+  font-size: 20px !important;
+  line-height: 1.35 !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+  margin: 10px 0 15px 0 !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 700 !important;
+}
+
+.ast-blog-layout-4-grid h2.entry-title a {
+  color: #c4a265 !important;
+  text-decoration: none !important;
+  font-size: 20px !important;
+  line-height: 1.35 !important;
+  letter-spacing: 1.5px !important;
+  transition: color 0.3s ease !important;
+}
+
+.ast-blog-layout-4-grid h2.entry-title a:hover {
+  color: #ffffff !important;
+}
+
+.ast-blog-layout-4-grid .entry-meta, 
+.ast-blog-layout-4-grid .entry-meta a {
+  color: #737373 !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  text-decoration: none !important;
+}
+
+.ast-blog-layout-4-grid .entry-meta a:hover {
+  color: #c4a265 !important;
+}
+
+.ast-blog-layout-4-grid .ast-blog-single-element {
+  margin-bottom: 12px !important;
+}
+
+
+/* ==========================================================================
+   Keystone Possibilities Single Post Blueprint & Components Styling
+   ========================================================================== */
+
+/* Parent Wrapper Blueprint */
+.kp-single-blueprint {
+  background-color: #0b0b0b !important;
+  color: #e8e8e8 !important;
+  font-family: 'Inter', sans-serif !important;
+  line-height: 1.85 !important;
+  letter-spacing: 0.2px !important;
+  max-width: 900px !important;
+  margin: 0 auto !important;
+  padding: 40px 20px !important;
+}
+
+.kp-single-blueprint h2 {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 28px !important;
+  font-weight: 700 !important;
+  color: #c4a265 !important;
+  margin-top: 55px !important;
+  margin-bottom: 25px !important;
+  border-bottom: 1px solid rgba(196, 162, 101, 0.15) !important;
+  padding-bottom: 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+}
+
+.kp-single-blueprint h3 {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  color: #e8e8e8 !important;
+  margin-top: 35px !important;
+  margin-bottom: 15px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+}
+
+.kp-single-blueprint p {
+  margin-bottom: 28px !important;
+  font-size: 16px !important;
+  font-weight: 300 !important;
+}
+
+.kp-single-blueprint strong {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+.kp-single-blueprint blockquote {
+  border-left: 3px solid #c4a265 !important;
+  padding-left: 25px !important;
+  font-style: italic !important;
+  color: #a3a3a3 !important;
+  margin: 35px 0 !important;
+  font-size: 18px !important;
+  line-height: 1.75 !important;
+  background: transparent !important;
+}
+
+/* Disclaimers Column Grid */
+.kp-disclaimer-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 25px !important;
+  margin: 45px 0 !important;
+}
+
+@media (max-width: 768px) {
+  .kp-disclaimer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+}
+
+.kp-disclaimer-box {
+  padding: 30px !important;
+  border-radius: 6px !important;
+  background: rgba(10, 10, 10, 0.6) !important;
+  border: 1px solid rgba(196, 162, 101, 0.15) !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.kp-disclaimer-box:hover {
+  border-color: rgba(196, 162, 101, 0.3) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+.kp-disclaimer-box.contractor {
+  border-left: 3px solid #c4a265 !important;
+}
+
+.kp-disclaimer-title {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  margin-top: 0 !important;
+  margin-bottom: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+.kp-disclaimer-box.contractor .kp-disclaimer-title {
+  color: #c4a265 !important;
+}
+
+.kp-disclaimer-text {
+  font-size: 13px !important;
+  color: #a3a3a3 !important;
+  line-height: 1.65 !important;
+  margin: 0 !important;
+  font-weight: 300 !important;
+}
+
+/* High-Performance Quiet Luxury Media Facade Styling */
+.luxury-video-facade {
+  position: relative !important;
+  width: 100% !important;
+  padding-bottom: 56.25% !important; /* 16:9 Aspect Ratio */
+  height: 0 !important;
+  overflow: hidden !important;
+  border: 2px solid rgba(196, 162, 101, 0.2) !important;
+  border-radius: 6px !important;
+  background-color: #000000 !important;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6) !important;
+  cursor: pointer !important;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease !important;
+}
+
+.luxury-video-facade:hover {
+  border-color: rgba(196, 162, 101, 0.6) !important;
+  box-shadow: 0 20px 50px rgba(196, 162, 101, 0.1) !important;
+  transform: translateY(-2px) !important;
+}
+
+.luxury-video-facade iframe {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 10 !important;
+  border-radius: 4px !important;
+}
+
+.luxury-video-facade .facade-background {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-size: cover !important;
+  background-position: center !important;
+  transition: opacity 0.5s ease !important;
+  z-index: 1 !important;
+}
+
+.luxury-video-facade .facade-overlay {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%) !important;
+  transition: opacity 0.5s ease !important;
+  z-index: 2 !important;
+}
+
+.luxury-video-facade .play-button {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 54px !important;
+  height: 54px !important;
+  background: rgba(8, 8, 8, 0.85) !important;
+  border: 2px solid rgba(196, 162, 101, 0.5) !important;
+  border-radius: 50% !important;
+  color: #c4a265 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 3 !important;
+  cursor: pointer !important;
+  outline: none !important;
+  padding: 0 !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5) !important;
+}
+
+.luxury-video-facade:hover .play-button {
+  background: #c4a265 !important;
+  color: #080808 !important;
+  border-color: #ffffff !important;
+  transform: translate(-50%, -50%) scale(1.1) !important;
+  box-shadow: 0 0 40px rgba(196, 162, 101, 0.4) !important;
+}
+
+.luxury-video-facade .play-icon {
+  width: 20px !important;
+  height: 20px !important;
+  margin-left: 3px !important; /* Offset to center play triangle visually */
+  transition: fill 0.4s ease !important;
+}
+
+/* ==========================================================================
+   Keystone Possibilities - Single Post Title & Header Refinements (Quiet Luxury)
+   ========================================================================== */
+
+.single-post .entry-header {
+  text-align: center !important;
+  margin-top: 10px !important;
+  margin-bottom: 35px !important;
+  max-width: 850px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 0 10px !important;
+}
+
+.single-post h1.entry-title {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: clamp(24px, 3.8vw, 36px) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.025em !important;
+  color: #ffffff !important;
+  line-height: 1.25 !important;
+  margin-bottom: 15px !important;
+}
+
+.single-post .entry-meta,
+.single-post .entry-meta a {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.15em !important;
+  color: #c4a265 !important;
+  text-decoration: none !important;
+}
+
+.single-post .entry-meta .posted-on {
+  color: #a3a3a3 !important;
+}
+
+.single-post .entry-meta .author-name {
+  color: #00ced1 !important;
+  font-weight: 600 !important;
+}
