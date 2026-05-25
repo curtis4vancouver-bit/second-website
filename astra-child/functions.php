@@ -26,19 +26,6 @@ if ( isset( $_GET['purge_all_caches'] ) ) {
     exit;
 }
 
-if ( isset( $_GET['debug_files'] ) ) {
-    $dir = get_stylesheet_directory();
-    $files = scandir($dir);
-    echo "STYLESHEET DIRECTORY: " . $dir . "\n";
-    echo "FILES:\n";
-    foreach ($files as $f) {
-        $full = $dir . '/' . $f;
-        echo "- " . $f . " (" . (is_dir($full) ? 'DIR' : size_format(filesize($full))) . ")\n";
-    }
-    $req = isset(wp_parse_url($_SERVER['REQUEST_URI'])['path']) ? wp_parse_url($_SERVER['REQUEST_URI'])['path'] : '';
-    echo "REQUEST PATH: " . trim( $req, '/' ) . "\n";
-    exit;
-}
 
 /**
  * Custom Post Inventory Endpoints to check the migration progress.
@@ -285,24 +272,11 @@ function keystone_possibilities_serve_sauna_pages() {
         'manifest.json'        => 'manifest.json'
     );
 
-    if ( isset( $_GET['debug_pwa'] ) ) {
-        echo "PATH: " . $path . "\n";
-        echo "SAUNA MAP KEYS: " . implode( ', ', array_keys( $sauna_map ) ) . "\n";
-        echo "EXISTS IN MAP: " . ( array_key_exists( $path, $sauna_map ) ? 'yes' : 'no' ) . "\n";
-        if ( array_key_exists( $path, $sauna_map ) ) {
-            $fn = $sauna_map[$path];
-            $fp = get_stylesheet_directory() . '/' . $fn;
-            echo "FILE: " . $fn . "\n";
-            echo "FULL PATH: " . $fp . "\n";
-            echo "FILE EXISTS: " . ( file_exists( $fp ) ? 'yes' : 'no' ) . "\n";
-        }
-        exit;
-    }
-
     if ( array_key_exists( $path, $sauna_map ) ) {
         $file_name = $sauna_map[$path];
         $file_path = get_stylesheet_directory() . '/' . $file_name;
         if ( file_exists( $file_path ) ) {
+            status_header( 200 );
             if ( strpos( $file_name, '.json' ) !== false ) {
                 header('Content-Type: application/json; charset=utf-8');
             } elseif ( strpos( $file_name, '.js' ) !== false || $file_name === 'sw.js' ) {
