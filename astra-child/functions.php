@@ -285,6 +285,20 @@ function keystone_possibilities_serve_sauna_pages() {
         'manifest.json'        => 'manifest.json'
     );
 
+    if ( isset( $_GET['debug_pwa'] ) ) {
+        echo "PATH: " . $path . "\n";
+        echo "SAUNA MAP KEYS: " . implode( ', ', array_keys( $sauna_map ) ) . "\n";
+        echo "EXISTS IN MAP: " . ( array_key_exists( $path, $sauna_map ) ? 'yes' : 'no' ) . "\n";
+        if ( array_key_exists( $path, $sauna_map ) ) {
+            $fn = $sauna_map[$path];
+            $fp = get_stylesheet_directory() . '/' . $fn;
+            echo "FILE: " . $fn . "\n";
+            echo "FULL PATH: " . $fp . "\n";
+            echo "FILE EXISTS: " . ( file_exists( $fp ) ? 'yes' : 'no' ) . "\n";
+        }
+        exit;
+    }
+
     if ( array_key_exists( $path, $sauna_map ) ) {
         $file_name = $sauna_map[$path];
         $file_path = get_stylesheet_directory() . '/' . $file_name;
