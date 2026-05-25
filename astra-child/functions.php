@@ -26,6 +26,20 @@ if ( isset( $_GET['purge_all_caches'] ) ) {
     exit;
 }
 
+if ( isset( $_GET['debug_files'] ) ) {
+    $dir = get_stylesheet_directory();
+    $files = scandir($dir);
+    echo "STYLESHEET DIRECTORY: " . $dir . "\n";
+    echo "FILES:\n";
+    foreach ($files as $f) {
+        $full = $dir . '/' . $f;
+        echo "- " . $f . " (" . (is_dir($full) ? 'DIR' : size_format(filesize($full))) . ")\n";
+    }
+    $req = isset(wp_parse_url($_SERVER['REQUEST_URI'])['path']) ? wp_parse_url($_SERVER['REQUEST_URI'])['path'] : '';
+    echo "REQUEST PATH: " . trim( $req, '/' ) . "\n";
+    exit;
+}
+
 /**
  * Custom Post Inventory Endpoints to check the migration progress.
  */
