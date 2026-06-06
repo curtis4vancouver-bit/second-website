@@ -1097,7 +1097,8 @@ add_filter( 'query_vars', function( $vars ) {
 } );
 
 add_action( 'template_redirect', function() {
-    if ( ! get_query_var( 'keystone_llms_txt' ) ) {
+    $request_path = isset( $_SERVER['REQUEST_URI'] ) ? parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH ) : '';
+    if ( untrailingslashit( $request_path ) !== '/llms.txt' && ! get_query_var( 'keystone_llms_txt' ) ) {
         return;
     }
 
