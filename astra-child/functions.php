@@ -1148,9 +1148,22 @@ add_action( 'init', function() {
 - National home warranty builder Squamish
 ";
 
-    $file_path = ABSPATH . 'llms.txt';
-    if ( ! file_exists( $file_path ) || md5_file( $file_path ) !== md5( $llms_content ) ) {
-        @file_put_contents( $file_path, $llms_content );
+    $paths_to_write = array();
+    if ( isset( $_SERVER['DOCUMENT_ROOT'] ) && ! empty( $_SERVER['DOCUMENT_ROOT'] ) ) {
+        $paths_to_write[] = rtrim( $_SERVER['DOCUMENT_ROOT'], '/' ) . '/llms.txt';
+    }
+    if ( defined( 'ABSPATH' ) ) {
+        $paths_to_write[] = ABSPATH . 'llms.txt';
+        $paths_to_write[] = rtrim( ABSPATH, '/' ) . '/../llms.txt';
+    }
+
+    $paths_to_write = array_unique( $paths_to_write );
+
+    foreach ( $paths_to_write as $path ) {
+        $normalized_path = wp_normalize_path( $path );
+        if ( ! file_exists( $normalized_path ) || md5_file( $normalized_path ) !== md5( $llms_content ) ) {
+            @file_put_contents( $normalized_path, $llms_content );
+        }
     }
 } );
 
