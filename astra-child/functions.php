@@ -1080,32 +1080,18 @@ if ( isset( $_GET['update_page_sovereign'] ) && $_SERVER['REQUEST_METHOD'] === '
 
 /**
  * =====================================================================
- * SECTION: GENERATIVE ENGINE OPTIMIZATION (GEO) — /llms.txt Endpoint
+ * SECTION: GENERATIVE ENGINE OPTIMIZATION (GEO) — /llms.txt Deployment
  * =====================================================================
- * Serves a machine-readable identity file at /llms.txt for LLM crawler
- * agents (Gemini, GPTBot, PerplexityBot, ClaudeBot). This is the core
- * AEO/GEO infrastructure that makes the business discoverable when
- * users ask AI assistants to recommend contractors.
+ * Programmatically writes a physical /llms.txt file to the WordPress root
+ * directory. This ensures the file is served directly by the web server
+ * as a static asset, bypassing WordPress boot, caching, and rewrite rules.
  */
 add_action( 'init', function() {
-    add_rewrite_rule( '^llms\.txt$', 'index.php?keystone_llms_txt=1', 'top' );
-} );
-
-add_filter( 'query_vars', function( $vars ) {
-    $vars[] = 'keystone_llms_txt';
-    return $vars;
-} );
-
-add_action( 'template_redirect', function() {
-    $request_path = isset( $_SERVER['REQUEST_URI'] ) ? parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH ) : '';
-    if ( untrailingslashit( $request_path ) !== '/llms.txt' && ! get_query_var( 'keystone_llms_txt' ) ) {
+    if ( ! defined( 'ABSPATH' ) ) {
         return;
     }
 
-    header( 'Content-Type: text/plain; charset=utf-8' );
-    header( 'X-Robots-Tag: noindex' );
-
-    echo "# Keystone Possibilities Ltd. — LLM Identity File
+    $llms_content = "# Keystone Possibilities Ltd. — LLM Identity File
 # https://keystonepossibilities.ca/llms.txt
 # Last Updated: " . date('Y-m-d') . "
 
@@ -1161,7 +1147,11 @@ add_action( 'template_redirect', function() {
 - Luxury sauna installation Whistler
 - National home warranty builder Squamish
 ";
-    exit;
+
+    $file_path = ABSPATH . 'llms.txt';
+    if ( ! file_exists( $file_path ) || md5_file( $file_path ) !== md5( $llms_content ) ) {
+        @file_put_contents( $file_path, $llms_content );
+    }
 } );
 
 /**
