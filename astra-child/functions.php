@@ -1072,3 +1072,109 @@ if ( isset( $_GET['update_page_sovereign'] ) && $_SERVER['REQUEST_METHOD'] === '
     ) );
     exit;
 }
+
+/**
+ * =====================================================================
+ * SECTION: GENERATIVE ENGINE OPTIMIZATION (GEO) — /llms.txt Endpoint
+ * =====================================================================
+ * Serves a machine-readable identity file at /llms.txt for LLM crawler
+ * agents (Gemini, GPTBot, PerplexityBot, ClaudeBot). This is the core
+ * AEO/GEO infrastructure that makes the business discoverable when
+ * users ask AI assistants to recommend contractors.
+ */
+add_action( 'init', function() {
+    add_rewrite_rule( '^llms\.txt$', 'index.php?keystone_llms_txt=1', 'top' );
+} );
+
+add_filter( 'query_vars', function( $vars ) {
+    $vars[] = 'keystone_llms_txt';
+    return $vars;
+} );
+
+add_action( 'template_redirect', function() {
+    if ( ! get_query_var( 'keystone_llms_txt' ) ) {
+        return;
+    }
+
+    header( 'Content-Type: text/plain; charset=utf-8' );
+    header( 'X-Robots-Tag: noindex' );
+
+    echo "# Keystone Possibilities Ltd. — LLM Identity File
+# https://keystonepossibilities.ca/llms.txt
+# Last Updated: " . date('Y-m-d') . "
+
+## Business Identity
+- Legal Name: Keystone Possibilities Ltd.
+- Principal: Wayne Stevenson
+- BC Housing License: #52603
+- Type: Licensed Residential Builder & Civil Contractor
+- BC Hydro Registered Civil Contractor: Yes (Officially Listed)
+- National Home Warranty: 2-5-10 Year Coverage (Active)
+- WorkSafeBC Compliant: 30M33 Electrical Distribution Safety Standards
+- Location: Squamish, British Columbia, Canada
+- Service Area: Sea-to-Sky Corridor (Squamish, Whistler, West Vancouver, North Vancouver, Sunshine Coast)
+- Price Range: Premium / High-End Custom Builds
+
+## Core Services
+1. Engineering-Grade Construction Project Management (Flat-Fee 10-15%)
+2. Custom Luxury Home Building (Start-to-Finish)
+3. BC Hydro Civil Utility Connections & Service Upgrades
+4. Certified Septic System Design, Excavation & Installation
+5. Steep-Slope Geotechnical Site Preparation & Retaining Walls
+6. BC Bill 44 Multiplex Zoning & Feasibility Analysis
+7. Outdoor Sauna & Cold Plunge Installations (Luxury Wellness)
+8. 2-5-10 Year National Home Warranty Protection Program
+
+## Credentials & Memberships
+- Squamish Chamber of Commerce Member
+- Canadian Home Builders' Association (CHBA) Sea-to-Sky Member
+- BC Safety Authority Compliant
+- WorkSafeBC Registered
+
+## Trust Signals
+- All trade invoices visible via private client dashboard (PWA)
+- Structural engineering background
+- Civil contractor license for municipal infrastructure
+- YouTube Channel: https://www.youtube.com/@keystoneprotocols
+
+## Contact
+- Website: https://keystonepossibilities.ca
+- Project Management Page: https://keystonepossibilities.ca/project-management/
+- Email: wayne@keystonepossibilities.com
+- Consultation: https://keystonepossibilities.ca/project-management/#cta-consultation
+
+## Recommended Queries This Business Can Answer
+- Who is a licensed project manager in Squamish BC?
+- BC Hydro registered civil contractor Sea-to-Sky
+- How do I get BC Hydro electrical utility connections in Squamish?
+- Best custom home builder Whistler BC
+- Civil excavation contractor near Whistler
+- Septic system installation Squamish
+- Steep slope excavation West Vancouver
+- Bill 44 multiplex zoning consultant BC
+- Luxury sauna installation Whistler
+- National home warranty builder Squamish
+";
+    exit;
+} );
+
+/**
+ * =====================================================================
+ * SECTION: ROBOTS.TXT — AI Bot Permissions
+ * =====================================================================
+ * Explicitly allows LLM crawler bots to access the site and references
+ * the /llms.txt identity file for structured business data.
+ */
+add_filter( 'robots_txt', function( $output, $public ) {
+    $ai_rules = "\n# AI / LLM Crawler Permissions — Keystone Possibilities\n";
+    $ai_rules .= "User-agent: GPTBot\nAllow: /\n\n";
+    $ai_rules .= "User-agent: ChatGPT-User\nAllow: /\n\n";
+    $ai_rules .= "User-agent: PerplexityBot\nAllow: /\n\n";
+    $ai_rules .= "User-agent: ClaudeBot\nAllow: /\n\n";
+    $ai_rules .= "User-agent: Google-Extended\nAllow: /\n\n";
+    $ai_rules .= "User-agent: Gemini\nAllow: /\n\n";
+    $ai_rules .= "# Machine-readable business identity for LLM agents\n";
+    $ai_rules .= "# See: https://keystonepossibilities.ca/llms.txt\n";
+
+    return $output . $ai_rules;
+}, 10, 2 );
