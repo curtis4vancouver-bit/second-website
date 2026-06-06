@@ -15,22 +15,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Enable cache purging endpoints for quick verification.
  */
-if ( isset( $_GET['purge_all_caches'] ) ) {
-    global $wpdb;
-    $wpdb->query( "DELETE FROM $wpdb->options WHERE option_name LIKE '_transient_rank_math_sitemap_%' OR option_name LIKE '_transient_timeout_rank_math_sitemap_%'" );
-    
-    if ( function_exists( 'opcache_reset' ) ) {
-        opcache_reset();
+add_action( 'init', function() {
+    if ( isset( $_GET['purge_all_caches'] ) ) {
+        global $wpdb;
+        $wpdb->query( "DELETE FROM $wpdb->options WHERE option_name LIKE '_transient_rank_math_sitemap_%' OR option_name LIKE '_transient_timeout_rank_math_sitemap_%'" );
+        
+        if ( function_exists( 'opcache_reset' ) ) {
+            opcache_reset();
+        }
+        if ( function_exists( 'wp_cache_flush' ) ) {
+            wp_cache_flush();
+        }
+        if ( function_exists( 'flush_rewrite_rules' ) ) {
+            flush_rewrite_rules();
+        }
+        echo "CACHES PURGED SUCCESSFULLY";
+        exit;
     }
-    if ( function_exists( 'wp_cache_flush' ) ) {
-        wp_cache_flush();
-    }
-    if ( function_exists( 'flush_rewrite_rules' ) ) {
-        flush_rewrite_rules();
-    }
-    echo "CACHES PURGED SUCCESSFULLY";
-    exit;
-}
+}, 20 );
 
 
 /**
